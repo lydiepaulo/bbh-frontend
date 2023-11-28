@@ -21,9 +21,19 @@
 		url('../../../public/images/Img_bg.png');
 	background-repeat: no-repeat;
 	background-size: cover;
+	color: var(--white);
 }
 
-.player {
+.black-gradient {
+	border-radius: 0px 0px 4px 4px;
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0) 0%,
+		rgba(0, 0, 0, 0.51) 71.02%
+	);
+}
+
+.player_button {
 	display: flex;
 	width: 66px;
 	height: 66px;

@@ -16,7 +16,16 @@
 }
 
 body {
-	color: var(--white);
+	color: var(--black-3);
 	background: var(--black-1);
 	overflow-x: hidden;
+}
+
+a {
+	color: var(--white);
+	font-weight: 600;
+}
+
+.h2 {
+	font-family: druk_text;
 }

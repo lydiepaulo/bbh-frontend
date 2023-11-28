@@ -1,7 +1,7 @@
 'use client'
+import '../app/styles/page.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import '../app/styles/page.css'
 import differenceInDays from 'date-fns/formatRelative'
 import frLocale from 'date-fns/locale/fr'
 
@@ -29,7 +29,6 @@ export default function Home() {
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-
   const fromSecondsToMinutes = (value) => {
     const sec = parseInt(value, 10)
     let hours = Math.floor(sec / 3600);
@@ -48,16 +47,17 @@ export default function Home() {
     const date = new Date(item.date_published)
     return (
       <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
+        <div className="black-gradient row-[1] col-[1] w-full h-full z-[1]"></div>
         <img
           className="row-[1] col-[1]"
           src={`https://api.brest.life/assets/${item.cover}`}
           alt=""
         />
-        <div className="mb- row-[1] col-[1] ml-[20px] pb-[84px] self-end">
+        <div className="row-[1] col-[1] ml-[20px] pb-[15px] self-end z-[2]">
           <p className="font-custom text-3xl uppercase">{item.title}</p>
           <span>{differenceInDays(date, today, { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
+          <div id="playerButton" className="player_button text-xl"><FaPlay /></div>
         </div>
-        <div id="playerButton" className="player row-[1] col-[1] ml-[20px] mb-[15px] self-end text-xl"><FaPlay /></div>
       </SwiperSlide>
     )
   });
