@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import Logo from "../../../public/images/logo.svg"
 
 export default function Navbar({ isLive }) {
     return (

@@ -1,0 +1,51 @@
+.ellipsis {
+	position: fixed;
+	width: 889px;
+	height: 889px;
+	border-radius: 889px;
+	background: radial-gradient(
+		45.29% 45.29% at 50% 50%,
+		#f1a 0%,
+		rgba(255, 17, 170, 0) 100%
+	);
+}
+
+/* first section */
+#section_direct {
+	background: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0) 0%,
+			rgba(0, 0, 0, 0.39) 50.47%,
+			#000 100%
+		),
+		url('../../../public/images/Img_bg.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.player {
+	display: flex;
+	width: 66px;
+	height: 66px;
+	padding: 5px 8px 5px 12px;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+	flex-shrink: 0;
+	border-radius: 100px;
+	background: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(5px);
+}
+
+/* second section */
+#last_replays {
+	background: url('../../../public/images/Artwork.png'),
+		linear-gradient(
+			180deg,
+			var(--black-1),
+			rgba(0, 0, 0, 0.7) 67.89%,
+			rgba(0, 0, 0, 0) 96.16%
+		);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}

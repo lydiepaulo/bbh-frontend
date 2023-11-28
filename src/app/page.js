@@ -1,5 +1,9 @@
 'use client'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import '../app/styles/page.css'
+import differenceInDays from 'date-fns/formatRelative'
+import frLocale from 'date-fns/locale/fr'
 
 //fetch
 import useSWR from 'swr'
@@ -25,20 +29,38 @@ export default function Home() {
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  const directVideos = data.data.map(item => (
-    <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
-      <img
-        className="row-[1] col-[1]"
-        src={`https://api.brest.life/assets/${item.cover}`}
-        alt=""
-      />
-      <div className="mb- row-[1] col-[1] ml-[20px] pb-[84px] self-end">
-        <p className="font-custom text-3xl uppercase">{item.title}</p>
-        <span>{item.date_published} • {item.duration}</span>
-      </div>
-      <div id="playerButton" className="player row-[1] col-[1] ml-[20px] mb-[15px] self-end text-xl"><FaPlay /></div>
-    </SwiperSlide>
-  ));
+
+  const fromSecondsToMinutes = (value) => {
+    const sec = parseInt(value, 10)
+    let hours = Math.floor(sec / 3600);
+    let minutes = Math.floor((sec - hours * 3600) / 60);
+    let seconds = sec - hours * 3600 - minutes * 60;
+    if (hours < 10) hours = '0' + hours
+    if (minutes < 10) minutes = '0' + minutes
+    if (seconds < 10) seconds = '0' + seconds
+
+    if (hours === '00') return `${minutes}:${seconds}`
+    else return `${hours}:${minutes}:${seconds}`
+  }
+
+  const today = new Date();
+  const directVideos = data.data.map(item => {
+    const date = new Date(item.date_published)
+    return (
+      <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
+        <img
+          className="row-[1] col-[1]"
+          src={`https://api.brest.life/assets/${item.cover}`}
+          alt=""
+        />
+        <div className="mb- row-[1] col-[1] ml-[20px] pb-[84px] self-end">
+          <p className="font-custom text-3xl uppercase">{item.title}</p>
+          <span>{differenceInDays(date, today, { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
+        </div>
+        <div id="playerButton" className="player row-[1] col-[1] ml-[20px] mb-[15px] self-end text-xl"><FaPlay /></div>
+      </SwiperSlide>
+    )
+  });
 
   return (
     <main className="flex max-w-screen min-h-screen flex-col">
@@ -76,19 +98,11 @@ export default function Home() {
           className="mySwiper2"
         >
           <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
         </Swiper>
       </section>
 
       {/* third section */}
-      <section id="matchs">
+      <section id="matchs" className="z-10 h-[534px] pl-[80px]">
         <Swiper
           spaceBetween={30}
           pagination={{
@@ -98,14 +112,6 @@ export default function Home() {
           className="mySwiper3"
         >
           <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
         </Swiper>
       </section>
 
@@ -113,6 +119,8 @@ export default function Home() {
       {/* ellipsis */}
       <div className="ellipsis top-[-14px] left-[-370px] z-0"></div>
       <div className="ellipsis top-[44px] right-[-541px] z-0"></div>
+
+      <Footer></Footer>
     </main>
   )
 }
