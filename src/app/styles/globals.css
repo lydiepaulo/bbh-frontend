@@ -28,4 +28,11 @@ a {
 
 .h2 {
 	font-family: druk_text;
+	color: var(--white);
+	margin-bottom: 37px;
+	font-size: 32px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 22px;
+	text-transform: uppercase;
 }

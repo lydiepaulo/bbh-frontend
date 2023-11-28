@@ -11,7 +11,7 @@
 }
 
 /* first section */
-#section_direct {
+#section-1 {
 	background: linear-gradient(
 			180deg,
 			rgba(0, 0, 0, 0) 0%,
@@ -48,7 +48,7 @@
 }
 
 /* second section */
-#last_replays {
+#section-2 {
 	background: url('../../../public/images/Artwork.png'),
 		linear-gradient(
 			180deg,
