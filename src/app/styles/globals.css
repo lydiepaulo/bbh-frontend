@@ -28,7 +28,7 @@ a {
 }
 
 .h2 {
-	font-family: druk_text;
+	font-family: druk_text, impact, sans-serif;
 	color: var(--white);
 	margin-bottom: 37px;
 	font-size: 32px;

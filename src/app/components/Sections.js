@@ -19,7 +19,7 @@ export default function Sections() {
     const { data: data2, error: error2 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
     const { data: data3, error: error3 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
     const { data: data4, error: error4 } = useSWR('https://api.brest.life/items/video?filter={"title":{"_contains":"saga"}}&sort=title', fetcher);
-    const { data: data5, error: error5 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
+    const { data: data5, error: error5 } = useSWR('https://api.brest.life/items/video?sort=-view_count&limit=10', fetcher);
     const { data: data6, error: error6 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
 
     if (error1 || error2 || error3 || error4 || error5 || error6) {
@@ -30,13 +30,7 @@ export default function Sections() {
         return <div>Loading...</div>;
     }
 
-    if (data4.data) {
-        let data4videos = data4.data
-        data4videos = data4videos.map(e => {
-            console.log(e.video)
-            return (e.video)
-        })
-    }
+    console.log(data5)
 
     //const [selectedSeason, setSelectedSeason] = useState(0);
 
@@ -79,7 +73,7 @@ export default function Sections() {
             {/* section 4 */}
             <section id="section-4" className="z-10 pl-20">
                 <h2 className="h2">Les plus regardés</h2>
-                {/* <SwiperComponent slidesPerView={4.3} data={data5} /> */}
+                <SwiperComponent slidesPerView={4.3} data={data5} />
             </section>
 
             {/* section 5 */}

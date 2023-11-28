@@ -13,7 +13,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        custom: ['druk_text', 'sans-serif'],
+        custom: ['druk_text', 'impact', 'sans-serif'],
       }
     },
   },
