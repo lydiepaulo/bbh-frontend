@@ -18,7 +18,7 @@ export default function Sections() {
     const { data: data1, error: error1 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=3', fetcher);
     const { data: data2, error: error2 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
     const { data: data3, error: error3 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
-    const { data: data4, error: error4 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
+    const { data: data4, error: error4 } = useSWR('https://api.brest.life/items/video?filter={"title":{"_contains":"saga"}}&sort=title', fetcher);
     const { data: data5, error: error5 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
     const { data: data6, error: error6 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
 
@@ -28,6 +28,14 @@ export default function Sections() {
 
     if (!data1 || !data2 || !data3 || !data4 || !data5 || !data6) {
         return <div>Loading...</div>;
+    }
+
+    if (data4.data) {
+        let data4videos = data4.data
+        data4videos = data4videos.map(e => {
+            console.log(e.video)
+            return (e.video)
+        })
     }
 
     //const [selectedSeason, setSelectedSeason] = useState(0);
@@ -71,13 +79,13 @@ export default function Sections() {
             {/* section 4 */}
             <section id="section-4" className="z-10 pl-20">
                 <h2 className="h2">Les plus regardés</h2>
-                <SwiperComponent slidesPerView={4.3} data={data5} />
+                {/* <SwiperComponent slidesPerView={4.3} data={data5} /> */}
             </section>
 
             {/* section 5 */}
             <section id="section-5" className="z-10 pl-20">
                 <h2 className="h2">Toutes nos playlists</h2>
-                <SwiperComponent slidesPerView={2.8} data={data6} />
+                {/* <SwiperComponent slidesPerView={2.8} data={data6} /> */}
             </section>
         </>
     )
