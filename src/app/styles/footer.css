@@ -1,5 +1,11 @@
 .footer {
-	background: url('../../../public/images/Union.png') no-repeat;
+	background: url('../../../public/images/Union.png'),
+		linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0.7) 67.89%,
+			rgba(0, 0, 0, 0.7) 67.89%
+		);
+	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
 }

@@ -3,7 +3,7 @@ import '../styles/footer.css'
 
 export default function Footer() {
     return (
-        <div className="footer flex flex-col w-screen justify-center items-center gap-[52px] py-[124px]">
+        <div className="z-10 footer flex flex-col w-screen justify-center items-center gap-[52px] py-[124px]">
             <div className="flex gap-[56px]">
                 <a href="">
                     <img src="/images/fb.svg" alt="" />

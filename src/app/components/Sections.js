@@ -154,7 +154,9 @@ export default function Sections() {
                     }
                 </Swiper>
             </section>
-            <section id="section-3" className="z-10 px-20 pb-10">
+
+            {/* section 3 */}
+            <section id="section-3" className="z-10 px-20 pb-20">
                 <div className="section-3__container px-[24px] pt-[260px] pb-[40px] rounded-3xl">
                     <Swiper
                         slidesPerView={4}
@@ -186,6 +188,75 @@ export default function Sections() {
                         }
                     </Swiper>
                 </div>
+            </section>
+
+            {/* section 4 */}
+            <section id="section-4" className="z-10 pb-16 pl-20">
+                <h2 className="h2">Les plus regardés</h2>
+                <Swiper
+                    slidesPerView={4.3}
+                    spaceBetween={30}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    className="mySwiper2"
+                >
+                    {data2.data &&
+                        data2.data.map(item => {
+                            return (
+                                <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
+                                    <div className="black-gradient row-[1] col-[1] w-full h-full z-[1]"></div>
+                                    <img
+                                        className="row-[1] col-[1]"
+                                        src={`https://api.brest.life/assets/${item.cover}`}
+                                        alt=""
+                                    />
+                                    <div className="row-[1] col-[1] ml-[20px] pb-[15px] self-end z-[2]">
+                                        <div id="playerButton" className="player_button text-xl"><FaPlay /></div>
+                                    </div>
+                                    <p className="font-custom text-3xl uppercase">{item.title}</p>
+                                    <span>{differenceInDays(new Date(item.date_published), new Date(), { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                    <div className="swiper-button-next"></div>
+                    <div className="swiper-button-prev"></div>
+                </Swiper>
+            </section>
+
+            <section id="section-5" className="z-10 pb-16 pl-20">
+                <h2 className="h2">Toutes nos playlists</h2>
+                <Swiper
+                    slidesPerView={2.8}
+                    spaceBetween={30}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    modules={[Pagination]}
+                    className="mySwiper6"
+                >
+                    {data3.data &&
+                        data3.data.map(item => {
+                            return (
+                                <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
+                                    <div className="black-gradient row-[1] col-[1] w-full h-full z-[1]"></div>
+                                    <img
+                                        className="row-[1] col-[1]"
+                                        src={`https://api.brest.life/assets/${item.cover}`}
+                                        alt=""
+                                    />
+                                    <div className="row-[1] col-[1] ml-[20px] pb-[15px] self-end z-[2]">
+                                        <div id="playerButton" className="player_button text-xl"><FaPlay /></div>
+                                    </div>
+                                    <p className="font-custom text-3xl uppercase">{item.title}</p>
+                                    <span>{differenceInDays(new Date(item.date_published), new Date(), { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                </Swiper>
             </section>
         </>
     )

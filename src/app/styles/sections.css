@@ -70,3 +70,21 @@
 		var(--secondary);
 	background-repeat: no-repeat;
 }
+
+#section-4 {
+	background-color: var(--black-1);
+}
+
+#section-5 {
+	/* background: linear-gradient(
+		180deg,
+		#000 0%,
+		rgba(0, 0, 0, 0.7) 67.89%,
+		rgba(0, 0, 0, 0) 96.16%
+	); */
+	background: linear-gradient(
+		180deg,
+		var(--black-1),
+		rgba(0, 0, 0, 0.7) 67.89%
+	);
+}
