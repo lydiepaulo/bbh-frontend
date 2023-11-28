@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import differenceInDays from 'date-fns/formatRelative'
 import frLocale from 'date-fns/locale/fr'
+import fromSecondsToMinutes from './helpers/fromSecondsToMinutes'
 
 //fetch
 import useSWR from 'swr'
@@ -29,22 +30,7 @@ export default function Home() {
   if (error) return <div>Failed to load</div>
   if (!data) return <div>Loading...</div>
 
-  const fromSecondsToMinutes = (value) => {
-    const sec = parseInt(value, 10)
-    let hours = Math.floor(sec / 3600);
-    let minutes = Math.floor((sec - hours * 3600) / 60);
-    let seconds = sec - hours * 3600 - minutes * 60;
-    if (hours < 10) hours = '0' + hours
-    if (minutes < 10) minutes = '0' + minutes
-    if (seconds < 10) seconds = '0' + seconds
-
-    if (hours === '00') return `${minutes}:${seconds}`
-    else return `${hours}:${minutes}:${seconds}`
-  }
-
-  const today = new Date();
   const directVideos = data.data.map(item => {
-    const date = new Date(item.date_published)
     return (
       <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
         <div className="black-gradient row-[1] col-[1] w-full h-full z-[1]"></div>
@@ -55,7 +41,7 @@ export default function Home() {
         />
         <div className="row-[1] col-[1] ml-[20px] pb-[15px] self-end z-[2]">
           <p className="font-custom text-3xl uppercase">{item.title}</p>
-          <span>{differenceInDays(date, today, { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
+          <span>{differenceInDays(new Date(item.date_published), new Date(), { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
           <div id="playerButton" className="player_button text-xl"><FaPlay /></div>
         </div>
       </SwiperSlide>
