@@ -49,7 +49,7 @@ export default function Sections() {
     return (
         <>
             {/* first section */}
-            <section id="section-1" className="z-10 pt-[126px] pb-[64px] pl-[80px]">
+            <section id="section-1" className="z-10 pt-[126px] pb-16 pl-20">
                 <Swiper
                     slidesPerView={2.1}
                     spaceBetween={18}
@@ -88,7 +88,7 @@ export default function Sections() {
             </section>
 
             {/* second section */}
-            <section id="section-2" className="z-10 pl-[80px]">
+            <section id="section-2" className="z-10 pb-16 pl-20">
                 <h2 className="h2">Derniers replays</h2>
                 <Swiper
                     slidesPerView={4.3}
@@ -124,7 +124,6 @@ export default function Sections() {
 
 
                 <h2 className="h2">Retour sur les matchs</h2>
-
                 <Swiper
                     slidesPerView={2.8}
                     spaceBetween={30}
@@ -132,7 +131,7 @@ export default function Sections() {
                         clickable: true,
                     }}
                     modules={[Pagination]}
-                    className="mySwiper2"
+                    className="mySwiper3"
                 >
                     {data3.data &&
                         data3.data.map(item => {
@@ -154,6 +153,39 @@ export default function Sections() {
                         })
                     }
                 </Swiper>
+            </section>
+            <section id="section-3" className="z-10 px-20 pb-10">
+                <div className="section-3__container px-[24px] pt-[260px] pb-[40px] rounded-3xl">
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={30}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        modules={[Pagination]}
+                        className="mySwiper4"
+                    >
+                        {data3.data &&
+                            data3.data.map(item => {
+                                return (
+                                    <SwiperSlide key={item.id} className="rounded overflow-hidden !grid">
+                                        <div className="black-gradient row-[1] col-[1] w-full h-full z-[1]"></div>
+                                        <img
+                                            className="row-[1] col-[1]"
+                                            src={`https://api.brest.life/assets/${item.cover}`}
+                                            alt=""
+                                        />
+                                        <div className="row-[1] col-[1] ml-[20px] pb-[15px] self-end z-[2]">
+                                            <div id="playerButton" className="player_button text-xl"><FaPlay /></div>
+                                        </div>
+                                        <p className="font-custom text-3xl uppercase">{item.title}</p>
+                                        <span>{differenceInDays(new Date(item.date_published), new Date(), { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+                    </Swiper>
+                </div>
             </section>
         </>
     )

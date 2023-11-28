@@ -50,12 +50,23 @@
 /* second section */
 #section-2 {
 	background: url('../../../public/images/Artwork.png'),
-		linear-gradient(
-			180deg,
-			var(--black-1),
-			rgba(0, 0, 0, 0.7) 67.89%,
-			rgba(0, 0, 0, 0) 96.16%
-		);
+		linear-gradient(180deg, var(--black-1), rgba(0, 0, 0, 0.7) 67.89%);
 	background-repeat: no-repeat;
 	background-size: 100% auto;
+}
+
+/* third section */
+#section-3 {
+	background: linear-gradient(
+		0deg,
+		rgba(0, 0, 0, 1),
+		#000 56.56%,
+		rgba(0, 0, 0, 0.7) 98.89%
+	);
+}
+
+.section-3__container {
+	background: url('../../../public/images/champions_league.jpeg'),
+		var(--secondary);
+	background-repeat: no-repeat;
 }
