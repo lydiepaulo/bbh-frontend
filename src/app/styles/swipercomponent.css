@@ -1,0 +1,27 @@
+.playlist {
+	display: grid;
+}
+
+.playlist::before,
+.playlist::after {
+	content: '';
+	display: block;
+	height: 11px;
+	border-radius: 10px 10px 0 0;
+	transition: height 0.3s;
+}
+
+.playlist::after {
+	background: rgba(255, 255, 255, 0.09);
+	grid-row: 1;
+	margin: 0 28px;
+}
+.playlist::before {
+	background: rgba(255, 255, 255, 0.28);
+	margin: 0 14px;
+}
+
+.playlist:hover::before,
+.playlist:hover::after {
+	height: 0;
+}

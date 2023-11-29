@@ -29,7 +29,7 @@ export default function Sections() {
     const { data: data3, error: error3 } = useSWR('https://api.brest.life/items/video?filter={"title":{"_contains":"Retour%20sur%20le%20match"}}&sort=-date_published', fetcher);
     const { data: data4, error: error4 } = useSWR('https://api.brest.life/items/video?filter={"title":{"_contains":"saga"}}&sort=title', fetcher);
     const { data: data5, error: error5 } = useSWR('https://api.brest.life/items/video?sort=-view_count&limit=10', fetcher);
-    const { data: data6, error: error6 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
+    const { data: data6, error: error6 } = useSWR('https://api.brest.life/items/playlist', fetcher);
 
     if (error1 || error2 || error3 || error4 || error5 || error6) {
         return <div>Failed to load</div>;
@@ -100,7 +100,7 @@ export default function Sections() {
             {/* section 5 */}
             <section id="section-5" className="z-10 pl-20">
                 <h2 className="h2">Toutes nos playlists</h2>
-                {/* <SwiperComponent slidesPerView={2.8} data={data6.data} /> */}
+                <SwiperComponent slidesPerView={2.8} data={data6.data} play={false} timing={false} videos={true} />
             </section>
         </>
     )
