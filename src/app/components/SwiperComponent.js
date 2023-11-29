@@ -6,7 +6,7 @@ import frLocale from 'date-fns/locale/fr';
 import fromSecondsToMinutes from '../helpers/fromSecondsToMinutes';
 import { FaPlay } from 'react-icons/fa';
 
-export default function SwiperComponent({ id, slidesPerView, data, subtitle }) {
+export default function SwiperComponent({ id, slidesPerView, data, subtitle = '', height = '200px' }) {
     const [hoveredItems, setHoveredItems] = useState(Array(data.data.length).fill(false));
 
     const handleMouseOver = (index) => {
@@ -36,19 +36,19 @@ export default function SwiperComponent({ id, slidesPerView, data, subtitle }) {
                     return (
                         <SwiperSlide
                             key={item.id}
-                            className="small-swiper overflow-hidden !grid text-[var(--white)] transition-transform origin-top hover:!scale-105 !pb-3"
+                            className="small-swiper overflow-hidden !grid text-[var(--white)] origin-top-left hover:!scale-[1.02] !pb-3 transition-transform duration-500"
                             onMouseOver={() => handleMouseOver(index)}
                             onMouseLeave={() => handleMouseLeave(index)}
                         >
-                            <div className="black-gradient row-[1] col-[1] w-full h-full z-[2] rounded-lg flex justify-center items-center">
+                            <div className={`black-gradient row-[1] col-[1] w-full !h-[${height}] z-[2] rounded-lg flex justify-center items-center`}>
                                 {hoveredItems[index] && (
-                                    <div id="playerButton" className="player-button text-xl opacity-100 transition-opacity">
+                                    <div id="playerButton" className="player-button text-xl opacity-100 transition-opacity duration-500">
                                         {/* déclencher la vidéo */}
                                         <FaPlay />
                                     </div>
                                 )}
                             </div>
-                            <img className="row-[1] col-[1] rounded-lg" src={`https://api.brest.life/assets/${item.cover}`} alt={item.title} />
+                            <img className={`row-[1] col-[1] w-full h-[${height}] object-cover rounded-lg`} src={`https://api.brest.life/assets/${item.cover}`} alt={item.title} />
                             <p className="">{subtitle}</p>
                             <p className="font-custom text-3xl uppercase">{item.title}</p>
                             <span>

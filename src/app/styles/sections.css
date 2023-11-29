@@ -64,12 +64,6 @@
 	color: var(--white);
 }
 
-.small-swiper > img {
-	width: 100%;
-	height: 200px;
-	object-fit: cover;
-}
-
 .black-gradient {
 	border-radius: 0px 0px 4px 4px;
 	background: linear-gradient(

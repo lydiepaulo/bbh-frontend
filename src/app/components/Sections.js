@@ -60,7 +60,7 @@ export default function Sections() {
 
 
                 <h2 className="h2">Retour sur les matchs</h2>
-                <SwiperComponent slidesPerView={2.8} data={data3} />
+                <SwiperComponent slidesPerView={2.8} data={data3} height={270} />
             </section>
 
             {/* section 3 */}
