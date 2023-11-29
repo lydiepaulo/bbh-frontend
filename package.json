@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@swiper/core": "^0.0.21",
 		"date-fns": "^2.30.0",
 		"next": "14.0.3",
 		"react": "^18",
