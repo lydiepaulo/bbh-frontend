@@ -32,12 +32,12 @@ export default function SwiperHeader({ slidesPerView, data }) {
                             <img
                                 className="row-[1] col-[1]"
                                 src={`https://api.brest.life/assets/${item.cover}`}
-                                alt=""
+                                alt={item.title}
                             />
                             <div className="row-[1] col-[1] ml-[20px] pb-[15px] self-end z-[2]">
                                 <p className="font-custom text-3xl uppercase">{item.title}</p>
                                 <span>{differenceInDays(new Date(item.date_published), new Date(), { addSuffix: true, locale: frLocale })} • {fromSecondsToMinutes(`${item.duration}`)}</span>
-                                <div id="playerButton" className="player_button text-xl"><FaPlay /></div>
+                                <div id="playerButton" className="player-button text-xl"><FaPlay /></div>
                             </div>
                         </SwiperSlide>
                     )
