@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //fetch
 import useSWR from 'swr'
@@ -15,9 +15,13 @@ import SwiperComponent from './SwiperComponent';
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Sections() {
+    const [selectedSeason, setSelectedSeason] = useState([
+        '2023-2023'
+    ]);
+
     const { data: data1, error: error1 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=3', fetcher);
     const { data: data2, error: error2 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
-    const { data: data3, error: error3 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
+    const { data: data3, error: error3 } = useSWR('https://api.brest.life/items/video?filter={"title":{"_contains":"Retour%20sur%20le%20match"}}&sort=-date_published', fetcher);
     const { data: data4, error: error4 } = useSWR('https://api.brest.life/items/video?filter={"title":{"_contains":"saga"}}&sort=title', fetcher);
     const { data: data5, error: error5 } = useSWR('https://api.brest.life/items/video?sort=-view_count&limit=10', fetcher);
     const { data: data6, error: error6 } = useSWR('https://api.brest.life/items/video?sort=-date_published&limit=10', fetcher);
@@ -30,21 +34,12 @@ export default function Sections() {
         return <div>Loading...</div>;
     }
 
-    console.log(data5)
-
-    //const [selectedSeason, setSelectedSeason] = useState(0);
-
     function filterVideosBySeason(videos, season) {
         // Implémentez la logique de filtrage ici
         return videos.filter(video => video.season === season);
     }
 
-    //const filteredReplayVideos = filterVideosBySeason(data2.data, selectedSeason);
-
-    const section3Videos = data3.data.map(item => (
-        "test"
-    ));
-
+    const filteredReplayVideos = filterVideosBySeason(data3.data, selectedSeason);
 
     return (
         <>
