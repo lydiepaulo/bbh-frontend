@@ -1,0 +1,4 @@
+.scrolled {
+	backdrop-filter: blur(12px);
+	background: rgba(0, 0, 0, 0.5);
+}

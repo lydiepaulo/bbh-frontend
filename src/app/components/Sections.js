@@ -58,7 +58,6 @@ export default function Sections() {
     }
 
     const filteredReplayVideos = filterVideosBySeason(data3.data)
-    console.log(filteredReplayVideos);
 
     return (
         <>

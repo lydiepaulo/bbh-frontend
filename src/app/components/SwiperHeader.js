@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Keyboard, Mousewheel, Pagination, Navigation } from 'swiper/modules'
+import { Pagination, Navigation } from 'swiper/modules'
 
 // functions helpers
 import differenceInDays from 'date-fns/formatRelative'
@@ -23,7 +23,6 @@ export default function SwiperHeader({ slidesPerView, data }) {
                 slidesPerView={slidesPerView}
                 keyboard={true}
                 direction="horizontal"
-                mousewheel={true}
                 spaceBetween={18}
                 pagination={{
                     clickable: true,
@@ -48,9 +47,8 @@ export default function SwiperHeader({ slidesPerView, data }) {
                                     height="100%"
                                     src={`https://www.youtube.com/embed/${item.youtube_id}?rel=0&showinfo=0&autoplay=1&loop=1&modestbranding=1&mute=1`}
                                     title={`${item.title}`}
-                                    frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen
+                                    allowFullScreen
                                     className="z-20 row-[1] col-[1] opacity-100 transition-all duration-1000 rounded-lg"></iframe>
                             )}
                             <div className="black-gradient row-[1] col-[1] w-full h-full z-[1] hover:!scale-[1.02] transition-transform duration-500"></div>

@@ -34,9 +34,8 @@ export default function SwiperComponent({ id, slidesPerView, data, subtitle = ''
                                 height="100%"
                                 src={`https://www.youtube.com/embed/${item.youtube_id}?rel=0&showinfo=0&autoplay=1&loop=1&modestbranding=1&mute=1`}
                                 title={`${item.title}`}
-                                frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen
+                                allowFullScreen
                                 className="z-20 row-[1] col-[1] opacity-100 transition-all duration-1000 rounded-lg"></iframe>
                         )}
                         <div className={`black-gradient row-[1] col-[1] w-full h-[${height}] z-[2] rounded-lg flex justify-center items-center`}>
